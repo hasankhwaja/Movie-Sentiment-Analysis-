@@ -12,13 +12,13 @@ Naïve bayes classifier was used due to how it was easy to implement and computa
 # Experiment setup:
 The dataset consists of 156,060 entries with four columns: PhraseId, SentenceId, Phrase, and Sentiment. Each row represents a phrase extracted from a movie review, along with its corresponding sentiment label. Sentiment is categorized into five classes: 0 (negative), 1 (somewhat negative), 2 (neutral), 3 (somewhat positive), and 4 (positive). All columns had complete data with no missing values. The class distribution is as follows 
 
-*•	Class Distribution:
-**o	Neutral (2): 51.0%
-**o	Somewhat Positive (3): 21.1%
-**o	Somewhat Negative (1): 17.5%
-**o	Positive (4): 5.9%
-**o	Negative (0): 4.5%
-*•	Average Phrase Length: Each phrase has an average length of approximately 40 characters.
+* •	Class Distribution:
+* o	Neutral (2): 51.0%
+* o	Somewhat Positive (3): 21.1%
+* o	Somewhat Negative (1): 17.5%
+* o	Positive (4): 5.9%
+* o	Negative (0): 4.5%
+* •	Average Phrase Length: Each phrase has an average length of approximately 40 characters.
 
 As seen, the dataset was imbalanced, with neutral phrases making up the majority, and extreme sentiments (positive and negative) being underrepresented. To combat this issue, we used “from imblearn.over_sampling import RandomOverSampler “, as shown in balanceDataset.py.  The analysis on the balanced dataset is that it consists of 397,910 entries. The class distribution is as follows:
 •	Neutral (2): 20.0%
