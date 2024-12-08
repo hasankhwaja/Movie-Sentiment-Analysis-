@@ -12,21 +12,23 @@ Naïve bayes classifier was used due to how it was easy to implement and computa
 # Experiment setup:
 The dataset consists of 156,060 entries with four columns: PhraseId, SentenceId, Phrase, and Sentiment. Each row represents a phrase extracted from a movie review, along with its corresponding sentiment label. Sentiment is categorized into five classes: 0 (negative), 1 (somewhat negative), 2 (neutral), 3 (somewhat positive), and 4 (positive). All columns had complete data with no missing values. The class distribution is as follows 
 
-* •	Class Distribution:
-* o	Neutral (2): 51.0%
-* o	Somewhat Positive (3): 21.1%
-* o	Somewhat Negative (1): 17.5%
-* o	Positive (4): 5.9%
-* o	Negative (0): 4.5%
-* •	Average Phrase Length: Each phrase has an average length of approximately 40 characters.
+* 	Class Distribution:
+  * 	Neutral (2): 51.0%
+  *  	Somewhat Positive (3): 21.1%
+  *  	Somewhat Negative (1): 17.5%
+  * 	Positive (4): 5.9%
+  * 	Negative (0): 4.5%
+* 	Average Phrase Length: Each phrase has an average length of approximately 40 characters.
 
 As seen, the dataset was imbalanced, with neutral phrases making up the majority, and extreme sentiments (positive and negative) being underrepresented. To combat this issue, we used “from imblearn.over_sampling import RandomOverSampler “, as shown in balanceDataset.py.  The analysis on the balanced dataset is that it consists of 397,910 entries. The class distribution is as follows:
-•	Neutral (2): 20.0%
-•	Somewhat Positive (3): 20.0%
-•	Somewhat Negative (1): 20.0%
-•	Positive (4): 20.0%
-•	Negative (0): 20.0%
-•	Average Phrase Length: Each phrase has an average length of approximately 51 characters.
+
+*	Neutral (2): 20.0%
+*	Somewhat Positive (3): 20.0%
+*	Somewhat Negative (1): 20.0%
+*	Positive (4): 20.0%
+*	Negative (0): 20.0%
+*	Average Phrase Length: Each phrase has an average length of approximately 51 characters.
+  
 For the SVM model, the preprocessing and model parameter choices in the SVM implementation are designed to optimize performance for sentiment analysis. First, the text is converted to lowercase to ensure case-insensitivity, allowing words like "Great" and "great" to be treated as the same. Tokenization is then used to break each phrase into individual words, which are lemmatized to reduce them to their base forms (e.g., "running" becomes "run"). Stopwords such as "and" or "the" are removed, as they do not contribute meaningful information to sentiment analysis. These preprocessing steps ensure that only significant words are retained, reducing noise and focusing on the features.
 For feature extraction, TF-IDF vectorization is applied, transforming the text into numerical features by emphasizing words that are important to individual documents while down-weighting those common across all documents. Limiting the vocabulary to the top 5,000 features helps balance computational efficiency while retaining the most important terms.
 The SVM model uses a linear kernel, which is well-suited for text data, as high-dimensional text data is often linearly separable. The regularization parameter (C) is set to 1.0, a standard value that strikes a balance between maximizing the margin and minimizing classification errors, ensuring the model generalizes well without overfitting. The gamma parameter is set to 'auto' because it is not used by the linear kernel, but this setting ensures compatibility if a different kernel is chosen in the future. Finally, the degree is set to 3, the default for polynomial kernels, although it is not actively used in this case due to the linear kernel. These choices reflect common best practices for text classification, aimed at building a reliable and efficient sentiment analysis model.
