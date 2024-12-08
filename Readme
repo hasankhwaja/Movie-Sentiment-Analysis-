@@ -12,4 +12,5 @@ Submissions are evaluated on classification accuracy (the percent of labels that
 
 Final Scores: 
 SVM Score: 0.59897
-
+Naive Bayes Classifier: 0.55507
+BERT: 0.69553
